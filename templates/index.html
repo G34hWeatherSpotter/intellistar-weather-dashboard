@@ -11,8 +11,16 @@
         <h1>Weather Dashboard</h1>
     </header>
     <main>
+        <section id="city-selection">
+            <form action="/" method="post">
+                <label for="city">Enter City Name:</label>
+                <input type="text" id="city" name="city" required>
+                <button type="submit">Get Weather</button>
+            </form>
+        </section>
         <section id="current-weather">
             <h2>Current Weather</h2>
+            {% if weather %}
             <div class="weather-container">
                 <div class="weather-icon">
                     <img src="https://openweathermap.org/img/wn/{{ weather['weather'][0]['icon'] }}@2x.png" alt="Weather Icon">
@@ -24,6 +32,9 @@
                     <p id="wind">Wind: {{ weather['wind']['speed'] }} m/s</p>
                 </div>
             </div>
+            {% else %}
+            <p>Please enter a city name to get the weather information.</p>
+            {% endif %}
         </section>
         <section id="forecast">
             <h2>Forecast</h2>
