@@ -1,12 +1,8 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, request, send_from_directory
 import requests
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app = Flask(__name__)
-API_KEY = os.getenv('OPENWEATHERMAP_API_KEY')
+API_KEY = 'a97db271fbd00ad49643e95fcea32669'
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather?'
 
 def get_weather(city):
@@ -14,11 +10,13 @@ def get_weather(city):
     response = requests.get(url)
     return response.json()
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    city = 'New York'
-    weather_data = get_weather(city)
-    return render_template('index.html', weather=weather_data)
+    weather = None
+    if request.method == 'POST':
+        city = request.form['city']
+        weather = get_weather(city)
+    return render_template('index.html', weather=weather)
 
 @app.route('/static/<path:path>')
 def send_static(path):
