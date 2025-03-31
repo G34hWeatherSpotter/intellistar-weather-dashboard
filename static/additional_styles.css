@@ -1,0 +1,40 @@
+#city-selection form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#city-selection label {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#city-selection input {
+    padding: 5px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    border: 1px solid #0066cc;
+    border-radius: 5px;
+}
+
+#city-selection button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#city-selection button:hover {
+    background-color: #004d99;
+}
+
+#current-weather {
+    margin-top: 20px;
+}
+
+#weather-data p {
+    margin: 5px 0;
+}
